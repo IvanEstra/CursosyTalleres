@@ -47,7 +47,7 @@ module.exports = (app) =>{
     app.post('/beneficiario/signup', async (request, response) => {
         const newBene = new Bene ({...request.body}); //copia request.body
         await newBene.save(); //para que haga a su tiempo
-        return response.send({success:"ok"});
+        return response.send({success:"OK"});
     });
     //Editar Beneficiario
     app.put('/beneficiario/edit/:id', async (request, response) => {
@@ -62,7 +62,7 @@ module.exports = (app) =>{
         return response.json(bene);
     });
 
-    //Eliminar usuario
+    //Eliminar Beneficio
     app.get('/beneficiario/delete/:id', async (request, response) => {
         await Bene.findByIdAndDelete(request.params.id);
         return response.send({success: "OK"})
@@ -79,7 +79,7 @@ module.exports = (app) =>{
     app.post('/Cursos/signup', async (request, response) => {
         const newCursos = new Cursos ({...request.body}); //copia request.body
         await newCursos.save(); //para que haga a su tiempo
-        return response.send({success:"ok"});
+        return response.send({success:"OK"});
     });
     //Editar Cursos y Talleres
     app.put('/Cursos/edit/:id', async (request, response) => {
