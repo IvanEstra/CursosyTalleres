@@ -24,7 +24,7 @@ module.exports = (app) =>{
 
 
     //Obtener usuario
-     app.get('/getUsers/:id', async (request, response) => {
+     app.get('/getUser/:id', async (request, response) => {
         const user = await User.findById(request.params.id);
         return response.json(user);
     });
