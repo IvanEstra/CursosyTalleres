@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
     datefi: {type: String, required:true},
     area:{type:String, required:true},
     tipo:{type:String, required:true},
-    capacity: {type: Number, required:true}  
+    capacity: {type: Number, required:true},
+    date: {type: Date,default:Date.now}
 
 }); 
 module.exports = mongoose.model('registrocursos', UserSchema);
