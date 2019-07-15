@@ -19,7 +19,7 @@ module.exports = (app) =>{
     //Editar usuario
     app.put('/user/edit/:id', async (request, response) => {
         await User.findByIdAndUpdate(request.params.id,{...request.body});
-        return response.send({success: "ok"})
+        return response.send({success: "OK"})
     });
 
 
@@ -52,7 +52,7 @@ module.exports = (app) =>{
     //Editar Beneficiario
     app.put('/beneficiario/edit/:id', async (request, response) => {
         await Bene.findByIdAndUpdate(request.params.id,{...request.body});
-        return response.send({success: "ok"})
+        return response.send({success: "OK"})
     });
 
 
@@ -84,7 +84,7 @@ module.exports = (app) =>{
     //Editar Cursos y Talleres
     app.put('/Cursos/edit/:id', async (request, response) => {
         await Cursos.findByIdAndUpdate(request.params.id,{...request.body});
-        return response.send({success: "ok"})
+        return response.send({success: "OK"})
     });
 
 
