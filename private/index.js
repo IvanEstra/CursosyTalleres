@@ -99,4 +99,9 @@ module.exports = (app) =>{
         await Cursos.findByIdAndDelete(request.params.id);
         return response.send({success: "OK"})
     });
+
+    //Agregar evento
+    /*app.post("/events/add", MiddlewareValidSession, async (request, reponse)=>{
+        const newEvent=new Event({...request.body })
+    })*/
 };

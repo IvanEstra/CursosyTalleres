@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     sexo: {type: String, required:true},
     curp: {type: String, required:true},
     tel: {type: String, required:true},
-    email:{type: String, required:true}  
+    email:{type: String, required:true},
+    curso:{type:String, required:true}
 
 }); 
 module.exports = mongoose.model('registrobeneficiarios', UserSchema);
