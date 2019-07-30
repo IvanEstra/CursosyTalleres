@@ -1,0 +1,82 @@
+@font-face{
+    font-family: graphic-light;
+    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Light.otf");
+}
+
+@font-face{
+    font-family: "Graphik-Black";
+    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Black.otf");
+}
+html{
+    font-family:graphic-light!important;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%
+}
+body * {
+    font-family: graphic-light !important;
+    margin:0
+}
+.navbar{
+        padding: .1rem 1rem !important;
+}
+.navbar2{
+    background-color: #084866 !important
+}
+.navbar-brand img{
+	width: 70%;
+	height: auto;
+}
+.nav-cal{
+	background-color: #092432 !important;
+}
+.nav-link{
+	color: #fff !important;
+}
+.fa.fa-navicon {
+  color:white;
+}
+.custom-toggler.navbar-toggler {
+    border-color: none;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+.logosecretaria{
+    display: none;
+}
+@media (max-width: 576px) {
+    #calendar{
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    .gobbrand{
+        max-width: 200px;
+    }
+    .navbar-brand img{
+        width: 80%;
+        margin-left:10px;
+    }
+    .nombresecretaria{
+        display: none;
+    }
+    .logosecretaria{
+        display: block ;
+    }
+}
+.logosecretaria{
+        background-image: url("../images/logo_o.png");
+        vertical-align: top;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 95% auto;
+        background-position: center;
+        min-width: 200px;
+        width: 20%;
+        min-height: 50px;
+        max-height: 50px;
+        cursor: pointer;
+    }
+

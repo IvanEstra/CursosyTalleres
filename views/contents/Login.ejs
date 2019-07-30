@@ -1,0 +1,79 @@
+<%- include('../primary/onHead', {data: data}); -%>
+<section class="container">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="row wrap-login100">
+                <div class="login100-form-title">
+                    <span class="login100-form-title-1">Inicia sesión</span>
+                </div>
+
+                    <div class="text-center w-100" style="padding-top: 15px;">
+                        <img class="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
+                    </div>
+
+                    <form class="needs-validation login100-form" noValidate>
+                                <div class="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="email">Email: </label>
+                                    <input 
+                                        type="email" class="form-control" 
+                                        id="email" name="email" required
+                                        placeholder="Ingresa email"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu email
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="password">Contraseña: </label>
+                                    <input 
+                                        type="password" class="form-control" 
+                                        id="password" name="password" required
+                                        placeholder="Ingresa contraseña"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa tu contraseña
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <button type="submit" class="btn btn-success login100-form-btn">
+                                        Ingresar
+                                    </button>
+                                </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(() =>{
+        $("#senderbtn").click(() =>{
+            const data = {
+                email: $("#email").val(),
+                password: $("#password").val()
+            };
+
+            $.ajax({
+                url: "/login",
+                method: "POST",
+                data: data,
+                success: (result) =>{
+                    if(result.success){
+                        if(result.level === "admin"){
+                            window.location.href = "/principal";
+                        } else{
+                            window.location.href = "/cursos"
+                        }
+                    } else{
+                        alert("Usuario incorrecto");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<%- include('../primary/onBody', {data: data}); -%>

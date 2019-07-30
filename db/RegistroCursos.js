@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
     nombrecurso: {type: String, required:true},
     descri: {type: String, required:true},
     ponente: {type: String, required:true},
-    sexo: {type: String, required:true},
+    resena: {type: String, required:true},
     time: {type: String, required:true},
     datein:{type: String, required:true},
     datefi: {type: String, required:true},
