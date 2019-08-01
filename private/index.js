@@ -79,6 +79,7 @@ module.exports = (app) =>{
     app.post('/Cursos/signup', async (request, response) => {
         const newCursos = new Cursos ({...request.body}); //copia request.body
         await newCursos.save(); //para que haga a su tiempo
+        await request.files.img.mv("./public/img/"+newCursos._id+"-img1.png");
         return response.send({success:"OK"});
     });
     //Editar Cursos y Talleres
