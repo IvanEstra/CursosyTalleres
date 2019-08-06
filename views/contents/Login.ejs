@@ -11,18 +11,14 @@
                         <img class="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
                     </div>
 
-                    <form class="needs-validation login100-form" noValidate>
+                    <div class="login100-form">
                                 <div class="col-12 col-lg-6 mb-3">
                                     <label htmlFor="email">Email: </label>
                                     <input 
                                         type="email" class="form-control" 
                                         id="email" name="email" required
                                         placeholder="Ingresa email"
-                                        onChange={this.handleInputChange}
                                     />
-                                    <div class="invalid-feedback">
-                                        Por favor ingresa tu email
-                                    </div>
                                 </div>
 
                                 <div class="col-12 col-lg-6 mb-3">
@@ -31,19 +27,15 @@
                                         type="password" class="form-control" 
                                         id="password" name="password" required
                                         placeholder="Ingresa contraseña"
-                                        onChange={this.handleInputChange}
                                     />
-                                    <div class="invalid-feedback">
-                                        Por favor ingresa tu contraseña
-                                    </div>
                                 </div>
 
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="btn btn-success login100-form-btn">
+                                    <button class="btn btn-success login100-form-btn" id="senderbtn">
                                         Ingresar
                                     </button>
                                 </div>
-                    </form>
+                    </div>
             </div>
         </div>
     </div>
@@ -52,27 +44,31 @@
 <script type="text/javascript">
     $(() =>{
         $("#senderbtn").click(() =>{
-            const data = {
-                email: $("#email").val(),
-                password: $("#password").val()
-            };
+            if($("email").val() !="" && $("password").val() !=""){
+                const data = {
+                    email: $("#email").val(),
+                    password: $("#password").val()
+                };
 
-            $.ajax({
-                url: "/login",
-                method: "POST",
-                data: data,
-                success: (result) =>{
-                    if(result.success){
-                        if(result.level === "admin"){
-                            window.location.href = "/principal";
+                $.ajax({
+                    url: "/login",
+                    method: "POST",
+                    data: data,
+                    success: (result) =>{
+                        if(result.success){
+                            if(result.level === "Administrador"){
+                                window.location.href = "/principal";
+                            } else{
+                                window.location.href = "/principaluser"
+                            }
                         } else{
-                            window.location.href = "/cursos"
+                            window.alert("Usuario incorrecto");
                         }
-                    } else{
-                        alert("Usuario incorrecto");
                     }
-                }
-            });
+                });
+            }else{
+                window.alert("Ingresa tus datos");
+            }
         });
     });
 </script>

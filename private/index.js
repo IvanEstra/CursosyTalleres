@@ -1,6 +1,7 @@
 const User = require("../db/Usuarios");
 const Bene = require("../db/registrobeneficiarios");
 const Cursos = require("../db/RegistroCursos");
+const jwt = require("jwt-simple");
 
 
 module.exports = (app) =>{
@@ -8,6 +9,21 @@ module.exports = (app) =>{
     app.get('/getUsers',async (request,response)=>{
         const user = await User.find().sort({fecha: 'desc'});
         return response.json(user);
+    });
+
+    //Inicio sesion
+    app.post("/login", async (request, response) => {
+        const query = {email: request.body.email, password: request.body.password};
+        const user = await User.findOne(query);
+        if(!user) return response.send({ error: "use not found"});
+        response.cookie('token', jwt.encode(query, SECRET), {maxAge: 60000 * 60 * 12, httpOnly: true});
+        return response.send({success:"OK", level: user.level});
+    });
+
+    //cerrar sesion
+    app.get('/logout',async (request,response)=>{
+        response.cookie('token', "", {maxAge: 0, httpOnly: true});
+        return response.redirect("/login");
     });
 
     //Agregar usuario
@@ -101,8 +117,5 @@ module.exports = (app) =>{
         return response.send({success: "OK"})
     });
 
-    //Agregar evento
-    /*app.post("/events/add", MiddlewareValidSession, async (request, reponse)=>{
-        const newEvent=new Event({...request.body })
-    })*/
+    
 };
