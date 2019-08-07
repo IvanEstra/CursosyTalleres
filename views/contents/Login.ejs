@@ -2,40 +2,40 @@
 <section class="container">
     <div class="limiter">
         <div class="container-login100">
-            <div class="row wrap-login100">
+            <div class="row justify-content-center wrap-login100">
                 <div class="login100-form-title">
                     <span class="login100-form-title-1">Inicia sesión</span>
                 </div>
 
-                    <div class="text-center w-100" style="padding-top: 15px;">
-                        <img class="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
+                <div class="text-center w-100" style="padding-top: 15px;">
+                    <img class="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
+                </div>
+
+                <div class="login100-form">
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label htmlFor="email">Email: </label>
+                        <input 
+                            type="email" class="form-control" 
+                            id="email" name="email" required
+                            placeholder="Ingresa email"
+                        />
                     </div>
 
-                    <div class="login100-form">
-                                <div class="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="email">Email: </label>
-                                    <input 
-                                        type="email" class="form-control" 
-                                        id="email" name="email" required
-                                        placeholder="Ingresa email"
-                                    />
-                                </div>
-
-                                <div class="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="password">Contraseña: </label>
-                                    <input 
-                                        type="password" class="form-control" 
-                                        id="password" name="password" required
-                                        placeholder="Ingresa contraseña"
-                                    />
-                                </div>
-
-                                <div class="col-12 mt-3">
-                                    <button class="btn btn-success login100-form-btn" id="senderbtn">
-                                        Ingresar
-                                    </button>
-                                </div>
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label htmlFor="password">Contraseña: </label>
+                        <input 
+                            type="password" class="form-control" 
+                            id="password" name="password" required
+                            placeholder="Ingresa contraseña"
+                        />
                     </div>
+
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-success w-100" id="senderbtn">
+                            Ingresar
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -44,7 +44,8 @@
 <script type="text/javascript">
     $(() =>{
         $("#senderbtn").click(() =>{
-            if($("email").val() !="" && $("password").val() !=""){
+            console.log("Webos");
+            if($("#email").val() !="" && $("#password").val() !=""){
                 const data = {
                     email: $("#email").val(),
                     password: $("#password").val()
@@ -62,12 +63,20 @@
                                 window.location.href = "/principaluser"
                             }
                         } else{
-                            window.alert("Usuario incorrecto");
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Datos Incorrectos',
+                                text: 'Usuario y/o contraseña incorrectas'
+                            });
                         }
                     }
                 });
             }else{
-                window.alert("Ingresa tus datos");
+                Swal.fire({
+                    type: 'error',
+                    title: 'Datos Incorrectos',
+                    text: 'Ingresa todos los datos solicitados'
+                });
             }
         });
     });

@@ -1,7 +1,7 @@
 const User = require("../db/Usuarios");
 const jwt = require("jwt-simple");
 
-const SECRET = "Gk@42em#s$f@NV";
+const SECRET = "Gk@em#s$f@NV";
 
 const MiddlewareValidSession = (request, response, nextMiddleware) =>{
     try{
@@ -33,10 +33,55 @@ module.exports =(app) =>{
         res.render("contents/Login", {data: { title: "Inciar Sesión"}});
     });
     app.get("/", (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos y Talleres"}});
+        res.render("contents/React", {data: { title: "Login"}});
     });
     app.get("/cursos", MiddlewareValidSession, (req, res, next)=>{
         res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/registrocursos", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/modificarcursos", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/vistacurso", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/principal", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/regiscurs", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/modificarimg", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/registrobeneficiarios", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Beneficiarios", name: "SIGCTCE"}});
+    });
+    app.get("/beneficiarios", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Beneficiarios", name: "SIGCTCE"}});
+    });
+    app.get("/modificarbene", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
+    });
+    app.get("/registrobeneficiarios2", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
+    });
+    app.get("/mostrarbene", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
+    });
+    app.get("/user", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+    });
+    app.get("/principaluser", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+    });
+    app.get("/modificar", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+    });
+    app.get("/modificaruser", MiddlewareValidSession, (req, res, next)=>{
+        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
     });
     
 }

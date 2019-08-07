@@ -11,6 +11,7 @@ module.exports = (app) =>{
         return response.json(user);
     });
 
+    const SECRET = "Gk@em#s$f@NV";
     //Inicio sesion
     app.post("/login", async (request, response) => {
         const query = {email: request.body.email, password: request.body.password};
