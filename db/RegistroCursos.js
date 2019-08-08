@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
     area:{type:String, required:true},
     tipo:{type:String, required:true},
     capacity: {type: Number, required:true},
-    date: {type: Date,default:Date.now}
+    date: {type: Date,default:Date.now()},
+    email: String
 
 }); 
 module.exports = mongoose.model('registrocursos', UserSchema);

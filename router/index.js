@@ -32,56 +32,57 @@ module.exports =(app) =>{
     app.get("/signin", MiddlewareInLogin, (req, res, next)=>{
         res.render("contents/Login", {data: { title: "Inciar Sesión"}});
     });
-    app.get("/", (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Login"}});
+    app.get("/", MiddlewareInLogin,(req, res, next)=>{
+        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
     });
     app.get("/cursos", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+        res.render("contents/User", {data: { title: "Usuarios", name: "SIGCTCE"}});
     });
     app.get("/registrocursos", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/modificarcursos", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+        
     });
-    app.get("/vistacurso", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+    app.get("/registrobeneficiarios2", MiddlewareInLogin, (req, res, next)=>{
+        res.render("contents/User", {data: { title: "Cursos", name: "SIGCTCE"}});
+    });
+    app.get("/vistacurso", MiddlewareInLogin, (req, res, next)=>{
+        res.render("contents/User", {data: { title: "Cursos", name: "SIGCTCE"}});
     });
     app.get("/principal", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/regiscurs", MiddlewareValidSession, (req, res, next)=>{
         res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
     });
     app.get("/modificarimg", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Cursos", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/registrobeneficiarios", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Beneficiarios", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/beneficiarios", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Beneficiarios", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/modificarbene", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
-    });
-    app.get("/registrobeneficiarios2", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/mostrarbene", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Beneficirios", name: "SIGCTCE"}});
+        res.render("contents/User", {data: { title: "Usuario", name: "SIGCTCE"}});
     });
     app.get("/user", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/principaluser", MiddlewareValidSession, (req, res, next)=>{
         res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
     });
     app.get("/modificar", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     app.get("/modificaruser", MiddlewareValidSession, (req, res, next)=>{
-        res.render("contents/React", {data: { title: "Usuario", name: "SIGCTCE"}});
+        res.render("contents/React", {data: { title: "Administrador", name: "SIGCTCE"}});
     });
     
 }

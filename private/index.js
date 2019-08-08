@@ -5,13 +5,27 @@ const jwt = require("jwt-simple");
 
 
 module.exports = (app) =>{
+    const SECRET = "Gk@em#s$f@NV";
+    const MiddlewareValidSession = (request, response, nextMiddleware) =>{
+        try{
+            const my_user = jwt.decode(request.cookies.token, SECRET);
+            User.findOne(my_user, (err, user) =>{
+                if(err){
+                    return response.status(404).send("");
+                }else{
+                    response.my_user = user;
+                    return nextMiddleware();
+                }
+            });
+        }catch(e){
+            return response.status(404).send("");
+        }
+    };
     //obtener usuarios
     app.get('/getUsers',async (request,response)=>{
         const user = await User.find().sort({fecha: 'desc'});
         return response.json(user);
     });
-
-    const SECRET = "Gk@em#s$f@NV";
     //Inicio sesion
     app.post("/login", async (request, response) => {
         const query = {email: request.body.email, password: request.body.password};
@@ -24,7 +38,7 @@ module.exports = (app) =>{
     //cerrar sesion
     app.get('/logout',async (request,response)=>{
         response.cookie('token', "", {maxAge: 0, httpOnly: true});
-        return response.redirect("/login");
+        return response.redirect("/signin");
     });
 
     //Agregar usuario
@@ -93,8 +107,8 @@ module.exports = (app) =>{
     });
 
     //Agregar Cursos y Talleres
-    app.post('/Cursos/signup', async (request, response) => {
-        const newCursos = new Cursos ({...request.body}); //copia request.body
+    app.post('/Cursos/signup', MiddlewareValidSession, async (request, response) => {
+        const newCursos = new Cursos ({...request.body, email: response.my_user.email}); //copia request.body
         await newCursos.save(); //para que haga a su tiempo
         await request.files.img.mv("./public/image/cursos/"+newCursos._id+"-curso.png");
         return response.send({success:"OK"});
@@ -109,6 +123,12 @@ module.exports = (app) =>{
     //Obtener Cursos y Talleres
      app.get('/getCursos/:id', async (request, response) => {
         const cursos = await Cursos.findById(request.params.id);
+        return response.json(cursos);
+    });
+
+    //Obtener todos Cursos y Talleres
+    app.get('/getAllCursos', async (request, response) => {
+        const cursos = await Cursos.findById(request.params.id).sort({date: 'desc'});
         return response.json(cursos);
     });
 
