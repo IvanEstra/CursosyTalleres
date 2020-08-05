@@ -14,7 +14,7 @@
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.4",
+    "express-fileupload": "^1.1.9",
     "gmail-send": "^1.2.14",
     "helmet": "^3.18.0",
     "json2xls": "^0.1.2",
